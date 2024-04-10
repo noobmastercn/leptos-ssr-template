@@ -2,6 +2,7 @@ use crate::error_template::{AppError, ErrorTemplate};
 use leptos::*;
 use leptos_meta::*;
 use leptos_router::*;
+use tracing::info;
 
 #[component]
 pub fn App() -> impl IntoView {
@@ -25,7 +26,7 @@ pub fn App() -> impl IntoView {
             view! {
                 <ErrorTemplate outside_errors/>
             }
-            .into_view()
+            // .into_view()
         }>
             <main>
                 <Routes>
@@ -42,9 +43,17 @@ fn HomePage() -> impl IntoView {
     // Creates a reactive value to update the button
     let (count, set_count) = create_signal(0);
     let on_click = move |_| set_count.update(|count| *count += 1);
+    info!("================HomePage rendered");
 
     view! {
-        <h1>"Welcome to Leptos!"</h1>
-        <button on:click=on_click>"Click Me: " {count}</button>
+        <div class="flex justify-center items-center h-screen">
+            <div class="text-center">
+                <h1 class="text-3xl font-bold mb-4">Welcome to Leptos!</h1>
+                <button class="bg-blue-500 text-white font-bold py-2 px-4 rounded-full shadow-lg hover:bg-blue-400 transition duration-200"
+                on:click=on_click>
+                    Click Me: {count}
+                </button>
+            </div>
+        </div>
     }
 }
