@@ -35,8 +35,8 @@ pub fn App() -> impl IntoView {
                 <NavBar/>
                 <main class="flex-grow">
                     <Routes>
-                        <Route path="/" view=Home/>
-                        <Route path="/about" view=About/>
+                        <Route path="/" view=Home ssr=SsrMode::Async />
+                        <Route path="/about" view=About ssr=SsrMode::Async />
                     </Routes>
                 </main>
                 <Footer/>
