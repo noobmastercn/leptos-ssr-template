@@ -1,3 +1,6 @@
+use tracing::info;
+use leptos_ssr_template::util::logging::init_logging;
+
 #[cfg(feature = "ssr")]
 #[tokio::main]
 async fn main() {
@@ -6,6 +9,9 @@ async fn main() {
     use leptos_axum::{generate_route_list, LeptosRoutes};
     use leptos_ssr_template::app::*;
     use leptos_ssr_template::fileserv::file_and_error_handler;
+
+    // Initialize logging
+    let _guard = init_logging();
 
     // Setting get_configuration(None) means we'll be using cargo-leptos's env values
     // For deployment these variables are:
@@ -24,7 +30,7 @@ async fn main() {
         .with_state(leptos_options);
 
     let listener = tokio::net::TcpListener::bind(&addr).await.unwrap();
-    logging::log!("listening on http://{}", &addr);
+    info!("listening on http://{}", &addr);
     axum::serve(listener, app.into_make_service())
         .await
         .unwrap();
