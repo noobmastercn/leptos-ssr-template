@@ -1,12 +1,12 @@
-use tracing::info;
-use {{crate_name}}::util::logging::init_logging;
-
 #[cfg(feature = "ssr")]
 #[tokio::main]
 async fn main() {
     use axum::Router;
     use leptos::*;
     use leptos_axum::{generate_route_list, LeptosRoutes};
+    use tracing::info;
+    use {{crate_name}}::util::logging::init_logging;
+    use live_copilot_web::app::App;
     use {{crate_name}}::app::*;
     use {{crate_name}}::fileserv::file_and_error_handler;
 
