@@ -1,5 +1,5 @@
 use tracing::info;
-use leptos_ssr_template::util::logging::init_logging;
+use {{crate_name}}::util::logging::init_logging;
 
 #[cfg(feature = "ssr")]
 #[tokio::main]
@@ -7,8 +7,8 @@ async fn main() {
     use axum::Router;
     use leptos::*;
     use leptos_axum::{generate_route_list, LeptosRoutes};
-    use leptos_ssr_template::app::*;
-    use leptos_ssr_template::fileserv::file_and_error_handler;
+    use {{crate_name}}::app::*;
+    use {{crate_name}}::fileserv::file_and_error_handler;
 
     // Initialize logging
     let _guard = init_logging();
