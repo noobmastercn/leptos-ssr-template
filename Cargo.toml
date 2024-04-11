@@ -23,6 +23,7 @@ tracing-subscriber = { version = "0" }
 tracing-appender = { version = "0" }
 chrono = { version = "0" }
 http = "1"
+web-sys = "0"
 
 [features]
 hydrate = ["leptos/hydrate", "leptos_meta/hydrate", "leptos_router/hydrate"]
